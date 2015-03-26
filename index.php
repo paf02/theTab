@@ -11,12 +11,12 @@ hola saicos
    </head>
    <body>
 
-      <h1 id="fb-welcome">www</h1>
+      <h1 id="fb-welcome">3333</h1>
 
-      <script>
+    <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '886930604685812',
+      appId      : '340301179514261',
       xfbml      : true,
       version    : 'v2.3'
     });
@@ -25,7 +25,10 @@ hola saicos
 
 
 
-    function onLogin(response) {
+
+    // Place following code after FB.init call.
+
+function onLogin(response) {
   if (response.status == 'connected') {
     FB.api('/me?fields=first_name', function(data) {
       var welcomeBlock = document.getElementById('fb-welcome');
@@ -46,6 +49,14 @@ FB.getLoginStatus(function(response) {
     }, {scope: 'user_friends, email'});
   }
 });
+
+
+
+
+
+
+
+
 
 
 
