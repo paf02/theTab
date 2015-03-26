@@ -11,7 +11,7 @@ hola saicos
    </head>
    <body>
 
-      <h1 id="fb-welcome"></h1>
+      <h1 id="fb-welcome">www</h1>
 
       <script>
   window.fbAsyncInit = function() {
@@ -22,6 +22,9 @@ hola saicos
     });
 
     // ADD ADDITIONAL FACEBOOK CODE HERE
+
+
+
     function onLogin(response) {
   if (response.status == 'connected') {
     FB.api('/me?fields=first_name', function(data) {
@@ -43,6 +46,11 @@ FB.getLoginStatus(function(response) {
     }, {scope: 'user_friends, email'});
   }
 });
+
+
+
+
+    
   };
 
   (function(d, s, id){
