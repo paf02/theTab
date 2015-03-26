@@ -1,1 +1,64 @@
 hola saicos
+
+<!DOCTYPE html>
+<!--[if lte IE 9]><html class="lt-ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class=""> <!--<![endif]-->
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>{{site.name}} - {{ page.title }}</title>
+      <meta name="description" content="{{ page.description }}">
+      <meta name="keywords" content="{{ page.keywords }}">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- includes global header dependencies -->      
+      {% include head.html %}
+
+   </head>
+   <body>
+
+      <h1 id="fb-welcome"></h1>
+
+      <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '886930604685812',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+
+    // ADD ADDITIONAL FACEBOOK CODE HERE
+    function onLogin(response) {
+  if (response.status == 'connected') {
+    FB.api('/me?fields=first_name', function(data) {
+      var welcomeBlock = document.getElementById('fb-welcome');
+      welcomeBlock.innerHTML = 'Hello, ' + data.first_name + '!';
+    });
+  }
+}
+
+FB.getLoginStatus(function(response) {
+  // Check login status on load, and if the user is
+  // already logged in, go directly to the welcome message.
+  if (response.status == 'connected') {
+    onLogin(response);
+  } else {
+    // Otherwise, show Login dialog first.
+    FB.login(function(response) {
+      onLogin(response);
+    }, {scope: 'user_friends, email'});
+  }
+});
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+   </body>
+</html>
